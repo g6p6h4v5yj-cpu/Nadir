@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çarx - Mafia (Face ID)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>🎡 Çarx + Face ID 🛡️</h2>
+    
+    <button id="endGameBtn" class="danger-btn" style="display:none;">Oyunu Bitir</button>
+
+    <!-- Quraşdırma Formu -->
+    <div id="setupForm">
+        <label>Oyunçu adlarını yazın (vergüllə ayırın):</label>
+        <textarea id="playerNamesInput" rows="3" placeholder="Nadir, Elşən, Murad"></textarea>
+        
+        <label>Rolların sayını təyin edin:</label>
+        <div id="rolesCountContainer">
+            <div class="role-counter-row">
+                <span>Vətəndaş 👤</span>
+                <input type="number" id="count-Vətəndaş" value="" min="0">
+            </div>
+            <div class="role-counter-row">
+                <span>Polis 👮‍♂️</span>
+                <input type="number" id="count-Polis" value="" min="0">
+            </div>
+            <div class="role-counter-row">
+                <span>Oğru 🥷</span>
+                <input type="number" id="count-Oğru" value="" min="0">
+            </div>
+        </div>
+        
+        <button type="button" id="startGameBtn">Oyunu Başlat</button>
+    </div>
+
+    <!-- Real Üz Qeydiyyatı Bölməsi -->
+    <div id="faceRegisterSection" style="display:none; text-align:center;">
+        <h3 id="registerTitle">Oyunçu Üz Qeydiyyatı</h3>
+        <p style="color: #57606f;">Kameraya düz baxın və düyməyə basın.</p>
+        <div class="video-wrapper">
+            <video id="registerVideo" width="320" height="240" autoplay muted playsinline></video>
+        </div>
+        <button type="button" id="captureFaceBtn" class="secondary-btn">Üzümü Yadda Saxla 📸</button>
+    </div>
+
+    <!-- Oyun Bölməsi -->
+    <div id="gameSection" style="margin-top:20px; display:none;">
+        
+        <!-- Rol açılan zaman çıxan Kamera və Təhlükəsizlik Skanı -->
+        <div id="verificationScanner" style="display:none; text-align:center; background:#f1f2f6; padding:15px; border-radius:10px; margin-bottom:15px;">
+            <h4 id="scannerTitle">Face ID Yoxlanılır...</h4>
+            <div style="position: relative; width: 160px; height: 160px; margin: auto;">
+                <video id="verifyVideo" width="160" height="160" autoplay muted playsinline style="border-radius:50%; object-fit:cover; border:3px solid #1e90ff;"></video>
+            </div>
+            <p style="margin-top:10px; font-size:12px; color:#e74c3c;">Əgər bu şəxs o oyunçu deyilsə, dərhal SOS düyməsini basın!</p>
+            <button type="button" id="triggerSosBtn" class="danger-btn" style="margin-top:5px; padding:8px;">🚨 SƏHV ÜZ (SOS) 🚨</button>
+        </div>
+
+        <div id="gameBoard"></div>
+    </div>
+</div>
+
+<div id="endModal" class="modal">
+    <div class="modal-content">
+        <span class="close-x" id="closeModalX">❌</span>
+        <h3 style="margin-top: 15px;">Nə etmək istəyirsiniz?</h3>
+        <button class="secondary-btn" id="resetRoundBtn">Eyni kateqoriyada qal</button>
+        <button class="danger-btn" id="resetEverythingBtn">Kateqoriyanı sıfırla</button>
+    </div>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
